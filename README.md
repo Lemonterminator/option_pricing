@@ -180,6 +180,8 @@ NumPy vectorization does not guarantee multicore execution. C++ `par_unseq` perm
 
 ## Repository and outputs
 
+For paper-and-pencil study, use the [eight-part Black–Scholes and Greeks course](docs/bs_math/README.md). It covers the complete assignment with corrected derivations, Put pricing, additional Greeks, numerical error curves, and printable worksheets. Markdown is the source; generate the PDFs with `python -X utf8 scripts/build_bs_math_workbook.py`.
+
 | Path | Responsibility |
 | --- | --- |
 | `Python_prototype/` | Python kernels, batch API, compatibility script wrappers |
