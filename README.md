@@ -1,21 +1,21 @@
-# Quant Black–Scholes Greeks — v1.0.0
+# Quant Black–Scholes Greeks
 
-Python/NumPy and C++17 library for European call pricing, analytic Delta/Gamma, finite differences, and complex-step differentiation. Includes validated batch APIs, shared high-precision fixtures, error plots, and throughput experiments. The complex CDF defaults to **P3**, configurable per call with orders **2–6**.
+Python/NumPy and C++17 library for European call pricing, analytic Greeks, finite differences, and complex-step differentiation. Includes validated batch APIs, shared high-precision fixtures, error plots, and throughput experiments. The complex CDF defaults to **P3**, configurable per call with orders **2–6**.
 
 The current integration methods are **Python imports and C++ linking**. HTTP endpoints, Python/C++ bindings, and a pip-installable package are future work.
 
-## v1 scope
+## Current scope
 
 | Available | Planned |
 | --- | --- |
 | European Call; continuous dividend yield `q` | Put and put-call parity |
-| Analytic price, Delta, Gamma | Vega, Theta, Rho |
-| NumPy broadcasting and C++ batch facade | Implied-volatility solver |
+| Call price, Delta, Gamma. Call and Put Vega, Theta, Rho | Implied-volatility solver |
+| NumPy broadcasting and C++ batch facade | Python/C++ bindings |
 | Complex-step CDF P2–P6, default P3 | American exercise and discrete dividends |
-| C++ serial and analytic `ParUnseq` backend | Explicit SIMD backend and Python bindings |
+| C++ serial and analytic `ParUnseq` backend | Explicit SIMD backend |
 | Shared fixtures, automatic test report, numerical/performance studies | Market-data adapters, volatility surfaces, hosted API |
 
-See [release notes](docs/releases/v1.0.0.md), [API details](docs/complex_step_api.md), and the [test report](docs/test_status.md).
+See [release notes](docs/releases/v1.0.0.md), [complex-step API](docs/complex_step_api.md), [Vega, Theta and Rho API](docs/bs_greeks.md), and the [test report](docs/test_status.md).
 
 ## Quick start
 
@@ -165,7 +165,7 @@ python scripts/update_test_report.py --build-dir out/bs_cpp --config Release --o
 
 The last command tests an existing build. `-SkipCpp` produces an explicitly marked Python-only report. Report generation refreshes the function inventory, associations, outcomes, diagnostics, error tables/plots and CSV/JSON metadata. Maintain test associations and roadmap in `scripts/test_report_registry.json`. Correctness tests cover all five CDF orders regardless of the report-curve selection.
 
-**Recorded v1 verification:** 18 Python tests passed. In the latest recorded C++ run, `complex_cdf_order` and `gamma_edge` passed; Windows Application Control blocked `bs_batch_contract` and `normal_cdf` from starting (error 4551). Batch contract passed in the preceding run. Both P5 assignment entry points completed. This is partial local verification, not an all-green C++ or CI claim; see [raw evidence and plots](docs/test_status.md).
+The [test report](docs/test_status.md) records the most recent local run, including any launch failures. The [Vega, Theta and Rho accuracy report](docs/bs_greeks_accuracy.md) gives the independent high precision reference, QuantLib comparison, and finite difference curves.
 
 Shared golden CSVs use independent 80-digit mpmath references. Other sweep plots compare with the library's analytic formula: they are diagnostics, not proof of zero error over the whole domain. Extremely small steps can be unresolvable; FD Gamma and real-part CS Gamma suffer cancellation. Prefer analytic Greeks for ordinary pricing/risk calculations and numerical methods for cross-checks.
 

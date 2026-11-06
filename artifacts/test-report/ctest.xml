@@ -1,31 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuite name="Win32-ninja"
-	tests="4"
-	failures="2"
+	tests="5"
+	failures="0"
 	disabled="0"
 	skipped="0"
 	hostname="MonsterAI"
-	time="11"
-	timestamp="2026-10-03T17:06:03"
+	time="0"
+	timestamp="2026-11-06T01:52:15"
 	>
-	<testcase name="complex_cdf_order" classname="complex_cdf_order" time="0.387422" status="run">
+	<testcase name="complex_cdf_order" classname="complex_cdf_order" time="0.0131196" status="run">
 		<properties/>
 		<system-out>complex_cdf_order_test: golden, default, propagation, convergence passed
 </system-out>
 	</testcase>
-	<testcase name="bs_batch_contract" classname="bs_batch_contract" time="0" status="fail">
-		<failure message="BAD_COMMAND"/>
+	<testcase name="bs_batch_contract" classname="bs_batch_contract" time="0.0127878" status="run">
 		<properties/>
-		<system-out></system-out>
+		<system-out>bs_batch_contract_test: all cases passed
+</system-out>
 	</testcase>
-	<testcase name="gamma_edge" classname="gamma_edge" time="10.0489" status="run">
+	<testcase name="bs_greeks_contract" classname="bs_greeks_contract" time="0.0130779" status="run">
+		<properties/>
+		<system-out>40 golden rows (scalar, serial and par_unseq) and contract checks passed
+</system-out>
+	</testcase>
+	<testcase name="gamma_edge" classname="gamma_edge" time="0.0148354" status="run">
 		<properties/>
 		<system-out>gamma_edge_test: all tests passed.
 </system-out>
 	</testcase>
-	<testcase name="normal_cdf" classname="normal_cdf" time="0" status="fail">
-		<failure message="BAD_COMMAND"/>
+	<testcase name="normal_cdf" classname="normal_cdf" time="0.0127554" status="run">
 		<properties/>
-		<system-out></system-out>
+		<system-out>Phi_real_test: all tests passed.
+</system-out>
 	</testcase>
 </testsuite>

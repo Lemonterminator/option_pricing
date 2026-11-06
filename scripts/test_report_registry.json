@@ -2,11 +2,24 @@
   "sources": [
     "Python_prototype/black_scholes.py",
     "Python_prototype/bs_batch.py",
+    "Python_prototype/bs_greeks.py",
+    "Python_prototype/greeks_prototype.py",
     "BS_cpp/black_scholes.cpp",
     "BS_cpp/bs_batch.cpp",
     "BS_cpp/complex_step.cpp"
   ],
   "evidence": {
+    "Python_prototype/bs_greeks.py:evaluate_greeks": [
+      "test_bs_greeks.GreeksTests.*"
+    ],
+    "Python_prototype/greeks_prototype.py:greeks_scalar": [
+      "test_bs_greeks.GreeksTests.test_shared_high_precision_fixture",
+      "test_bs_greeks.GreeksTests.test_deterministic_kink_one_sided_time",
+      "test_bs_greeks.GreeksTests.test_invalid_and_overflow"
+    ],
+    "BS_cpp/bs_batch.cpp:evaluate_greeks": [
+      "cpp:bs_greeks_contract"
+    ],
     "Python_prototype/bs_batch.py:evaluate_call": [
       "test_bs_batch.BatchContractTests.*"
     ],
@@ -107,11 +120,6 @@
       "name": "Put 定价与 put-call parity",
       "path": "Python_prototype/black_scholes.py",
       "next": "增加 Put 与恒等式测试"
-    },
-    {
-      "name": "Vega / Theta / Rho",
-      "path": "Python_prototype/black_scholes.py",
-      "next": "增加解析公式、单位约定与差分检验"
     },
     {
       "name": "IV 求解器",

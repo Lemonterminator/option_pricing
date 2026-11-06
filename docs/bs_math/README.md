@@ -13,7 +13,7 @@
 | 03 | [有限差分与浮点误差](03_finite_differences.md) | 展开四种差分，平衡截断和舍入误差 |
 | 04 | [Complex-step 与 45° Gamma](04_complex_step.md) | 修正原作业，推出二阶与四阶收敛 |
 | 05 | [复数 CDF：Hermite 到 P3](05_cdf_and_order.md) | 解释 P1、P2、P3 为何给出不同 Gamma |
-| 06 | [Vega、Theta、Rho 与股息敏感度](06_first_order_greeks.md) | 推出其公式、单位与 PDE 关系 |
+| 06 | [Vega、Theta、Rho 与股息敏感度](06_first_order_greeks.md) | 从 Itô 方程推到价格公式，再求偏导并核对 PDE |
 | 07 | [Put 定价、平价与全部一阶 Greeks](07_put_and_parity.md) | 从到期收益推出 Put 与 Call 的关系 |
 | 08 | [高阶 Greeks、多变量 Taylor 与 IV](08_higher_greeks.md) | 推出 Vanna、Vomma、Speed、Charm、Color 等 |
 
@@ -49,7 +49,7 @@ $\phi$ 是标准正态密度，$\Phi$ 是标准正态 CDF。$\Theta=\partial V/\
 | 第 2 页，CDF 分派 | 一阶截断被描述为使价格解析延拓 | 有限阶实虚部分派一般不解析；P1 对 Delta 的局部二阶精度不能推广为所有 Gamma 的精度 |
 | 第 2 页，45° 余项 | 原文给出较宽松的 $O(h^6)$ | 对完整解析且实轴取实值的函数，筛掉八阶项后是 $O(h^8)$；P3 截断价格不自动继承这一余项 |
 
-第 04-05 篇用展开和反例逐条解释，不要求你接受一个没有证明的“修正结论”。当前生产 CDF 默认 P3，可选 `order=2..6`；本课程不改变生产代码，也不把尚未实现的 Put/其他 Greeks 写成已有 API。
+第 04 至 05 篇用展开和反例解释表中的修正。复数 CDF 默认 P3，可选 `order=2..6`。第 06 篇配套 [Vega、Theta、Rho 接口与原型](../bs_greeks.md)，覆盖欧式 Call 和 Put 的这三个敏感度。Put 价格接口仍在路线图中。
 
 ## 原作业逐页覆盖
 

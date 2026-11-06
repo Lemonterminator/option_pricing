@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-10-03T14:06:15.432754+00:00",
-  "commit": "54328eaf7d47c237b132376c42dcc07a87c52f0d",
+  "generated_at": "2026-11-05T23:52:15.900819+00:00",
+  "commit": "f9288913ae72a3c5a86e718bd8c37a0d8e41e2ed",
   "dirty": true,
   "python": "3.14.4 (tags/v3.14.4:23116f9, Apr  7 2026, 14:10:54) [MSC v.1944 64 bit (AMD64)]",
   "platform": "Windows-11-10.0.26300-SP0",
@@ -33,6 +33,36 @@
     },
     {
       "id": "test_bs_batch.BatchContractTests.test_scalar_and_broadcast_shapes",
+      "status": "PASS",
+      "reason": ""
+    },
+    {
+      "id": "test_bs_greeks.GreeksTests.test_broadcast_empty_and_unchanged_input",
+      "status": "PASS",
+      "reason": ""
+    },
+    {
+      "id": "test_bs_greeks.GreeksTests.test_calendar_theta_and_rate_hold_fixed",
+      "status": "PASS",
+      "reason": ""
+    },
+    {
+      "id": "test_bs_greeks.GreeksTests.test_deterministic_kink_one_sided_time",
+      "status": "PASS",
+      "reason": ""
+    },
+    {
+      "id": "test_bs_greeks.GreeksTests.test_invalid_and_overflow",
+      "status": "PASS",
+      "reason": ""
+    },
+    {
+      "id": "test_bs_greeks.GreeksTests.test_pde_gamma_and_put_call_identities",
+      "status": "PASS",
+      "reason": ""
+    },
+    {
+      "id": "test_bs_greeks.GreeksTests.test_shared_high_precision_fixture",
       "status": "PASS",
       "reason": ""
     },
@@ -103,8 +133,13 @@
     },
     {
       "id": "cpp:bs_batch_contract",
-      "status": "BLOCKED",
-      "reason": "BAD_COMMAND\n\n\nDirect launch diagnostic: [WinError 4551] An Application Control policy has blocked this file"
+      "status": "PASS",
+      "reason": ""
+    },
+    {
+      "id": "cpp:bs_greeks_contract",
+      "status": "PASS",
+      "reason": ""
     },
     {
       "id": "cpp:gamma_edge",
@@ -113,8 +148,8 @@
     },
     {
       "id": "cpp:normal_cdf",
-      "status": "BLOCKED",
-      "reason": "BAD_COMMAND\n\n\nDirect launch diagnostic: [WinError 4551] An Application Control policy has blocked this file"
+      "status": "PASS",
+      "reason": ""
     }
   ],
   "curve_metrics": [

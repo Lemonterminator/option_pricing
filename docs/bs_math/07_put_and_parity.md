@@ -122,7 +122,7 @@ $C=S(2\Phi(\sigma\sqrt T/2)-1)$。用 $\Phi(x)=1/2+\phi(0)x+O(x^3)$，得到 $C=
 
 价格平价、Delta 差、Gamma 相等、Vega 相等、Rho 差和 Theta 差可形成一组残差。再检查两个价格的 PDE 残差和无套利区间，以及独立高精度价格的数值偏导。
 
-当前生产 API 未实现 Put。教学脚本中的 Put/Greeks 是独立参考资料；不要在调用系统里把它当成已经发布的模块。欧式、连续收益率软件约定可对照 [MathWorks blsprice](https://www.mathworks.com/help/finance/blsprice.html)。美式行权、离散现金股息与真实市场报价不能仅靠这组平价式处理。
+Put 价格仍由本篇的教学脚本提供。Python 和 C++ 的 [Greeks 接口](../bs_greeks.md) 可计算欧式 Put 的 Vega、Theta、Rho。欧式、连续收益率软件约定可对照 [MathWorks blsprice](https://www.mathworks.com/help/finance/blsprice.html)。美式行权与离散现金股息需要各自的定价模型。
 
 ## 8. Put 的四张独立冲击卡
 

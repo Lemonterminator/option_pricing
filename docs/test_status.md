@@ -1,7 +1,7 @@
 # 自动测试与开发进度报告
 
-生成时间：2026-10-03T14:06:15.432754+00:00；commit：`54328eaf7d47c237b132376c42dcc07a87c52f0d`；工作区有改动：True。
-运行环境：`C:\Python314\python.exe`；Python `3.14.4`；`Windows-11-10.0.26300-SP0`。
+生成时间：2026-11-05T23:52:15.900819+00:00；commit：`f9288913ae72a3c5a86e718bd8c37a0d8e41e2ed`；工作区有改动：True。
+运行环境：`C:\Users\Jiang\Documents\Long Way to Quant\Quant_interview\out\greeks-validation\Scripts\python.exe`；Python `3.14.4`；`Windows-11-10.0.26300-SP0`。
 
 本次误差扫描的 CDF 阶数：**P3**；默认 P3。测试套件会独立验证全部支持阶数，不随扫描参数改变。
 
@@ -29,21 +29,29 @@
 | $\Gamma$ | `gamma_45_deg` | [Python_prototype/black_scholes.py](../Python_prototype/black_scholes.py) | 检测到定义 | PASS |
 | $C,\;\Delta,\;\Gamma$ | `evaluate_call` | [Python_prototype/bs_batch.py](../Python_prototype/bs_batch.py) | 检测到定义 | PASS |
 | $C,\;\Delta,\;\Gamma$ | `evaluate_call_complex_step` | [Python_prototype/bs_batch.py](../Python_prototype/bs_batch.py) | 检测到定义 | PASS |
-| $\Gamma$ | `Gamma` | [BS_cpp/black_scholes.cpp](../BS_cpp/black_scholes.cpp) | 检测到定义 | BLOCKED, PASS |
-| $\Gamma$ | `Gamma_par` | [BS_cpp/black_scholes.cpp](../BS_cpp/black_scholes.cpp) | 检测到定义 | BLOCKED |
-| $\Phi$ | `Phi_real` | [BS_cpp/black_scholes.cpp](../BS_cpp/black_scholes.cpp) | 检测到定义 | BLOCKED |
+| $\nu,\;\Theta,\;\rho$ | `evaluate_greeks` | [Python_prototype/bs_greeks.py](../Python_prototype/bs_greeks.py) | 检测到定义 | PASS |
+| $\nu,\;\Theta,\;\rho$ | `greeks_scalar` | [Python_prototype/greeks_prototype.py](../Python_prototype/greeks_prototype.py) | 检测到定义 | PASS |
+| $\Gamma$ | `Gamma` | [BS_cpp/black_scholes.cpp](../BS_cpp/black_scholes.cpp) | 检测到定义 | PASS |
+| $\Gamma$ | `Gamma_par` | [BS_cpp/black_scholes.cpp](../BS_cpp/black_scholes.cpp) | 检测到定义 | PASS |
+| $\Phi$ | `Phi_real` | [BS_cpp/black_scholes.cpp](../BS_cpp/black_scholes.cpp) | 检测到定义 | PASS |
 | $\Phi$ | `Phi_real_par` | [BS_cpp/black_scholes.cpp](../BS_cpp/black_scholes.cpp) | 检测到定义 | 未验证 / 待补关联测试 |
-| $C$ | `bs_price_call` | [BS_cpp/black_scholes.cpp](../BS_cpp/black_scholes.cpp) | 检测到定义 | BLOCKED |
-| $C$ | `bs_price_call_par` | [BS_cpp/black_scholes.cpp](../BS_cpp/black_scholes.cpp) | 检测到定义 | BLOCKED |
-| $\Delta$ | `delta_call` | [BS_cpp/black_scholes.cpp](../BS_cpp/black_scholes.cpp) | 检测到定义 | BLOCKED |
-| $\Delta$ | `delta_call_par` | [BS_cpp/black_scholes.cpp](../BS_cpp/black_scholes.cpp) | 检测到定义 | BLOCKED |
+| $C$ | `bs_price_call` | [BS_cpp/black_scholes.cpp](../BS_cpp/black_scholes.cpp) | 检测到定义 | PASS |
+| $C$ | `bs_price_call_par` | [BS_cpp/black_scholes.cpp](../BS_cpp/black_scholes.cpp) | 检测到定义 | PASS |
+| $\Delta$ | `delta_call` | [BS_cpp/black_scholes.cpp](../BS_cpp/black_scholes.cpp) | 检测到定义 | PASS |
+| $\Delta$ | `delta_call_par` | [BS_cpp/black_scholes.cpp](../BS_cpp/black_scholes.cpp) | 检测到定义 | PASS |
 | $\Delta$ | `delta_forward` | [BS_cpp/black_scholes.cpp](../BS_cpp/black_scholes.cpp) | 检测到定义 | 未验证 / 待补关联测试 |
 | $\Delta$ | `delta_forward_par` | [BS_cpp/black_scholes.cpp](../BS_cpp/black_scholes.cpp) | 检测到定义 | 未验证 / 待补关联测试 |
 | $\Gamma$ | `gamma_forward` | [BS_cpp/black_scholes.cpp](../BS_cpp/black_scholes.cpp) | 检测到定义 | 未验证 / 待补关联测试 |
 | $\Gamma$ | `gamma_forward_par` | [BS_cpp/black_scholes.cpp](../BS_cpp/black_scholes.cpp) | 检测到定义 | 未验证 / 待补关联测试 |
-| $C,\;\Delta,\;\Gamma$ | `evaluate_call` | [BS_cpp/bs_batch.cpp](../BS_cpp/bs_batch.cpp) | 检测到定义 | BLOCKED |
+| — | `check_greeks` | [BS_cpp/bs_batch.cpp](../BS_cpp/bs_batch.cpp) | 检测到定义 | 未验证 / 待补关联测试 |
+| $C,\;\Delta,\;\Gamma$ | `evaluate_call` | [BS_cpp/bs_batch.cpp](../BS_cpp/bs_batch.cpp) | 检测到定义 | PASS |
 | $C,\;\Delta,\;\Gamma$ | `evaluate_call_complex_step` | [BS_cpp/bs_batch.cpp](../BS_cpp/bs_batch.cpp) | 检测到定义 | PASS |
+| $\nu,\;\Theta,\;\rho$ | `evaluate_greeks` | [BS_cpp/bs_batch.cpp](../BS_cpp/bs_batch.cpp) | 检测到定义 | PASS |
+| — | `greeks_unchecked` | [BS_cpp/bs_batch.cpp](../BS_cpp/bs_batch.cpp) | 检测到定义 | 未验证 / 待补关联测试 |
+| — | `log_cdf` | [BS_cpp/bs_batch.cpp](../BS_cpp/bs_batch.cpp) | 检测到定义 | 未验证 / 待补关联测试 |
+| — | `option_sign` | [BS_cpp/bs_batch.cpp](../BS_cpp/bs_batch.cpp) | 检测到定义 | 未验证 / 待补关联测试 |
 | — | `validate` | [BS_cpp/bs_batch.cpp](../BS_cpp/bs_batch.cpp) | 检测到定义 | 未验证 / 待补关联测试 |
+| — | `weighted_exp` | [BS_cpp/bs_batch.cpp](../BS_cpp/bs_batch.cpp) | 检测到定义 | 未验证 / 待补关联测试 |
 | $\Phi$ | `Phi_t` | [BS_cpp/complex_step.cpp](../BS_cpp/complex_step.cpp) | 检测到定义 | PASS |
 | $C$ | `bs_price_call_complex` | [BS_cpp/complex_step.cpp](../BS_cpp/complex_step.cpp) | 检测到定义 | PASS |
 | $\Delta$ | `delta_complex_step` | [BS_cpp/complex_step.cpp](../BS_cpp/complex_step.cpp) | 检测到定义 | PASS |
@@ -58,7 +66,6 @@
 | 工作 | 从哪个相对路径继续 | 下一步 |
 | --- | --- | --- |
 | Put 定价与 put-call parity | [Python_prototype/black_scholes.py](../Python_prototype/black_scholes.py) | 增加 Put 与恒等式测试 |
-| Vega / Theta / Rho | [Python_prototype/black_scholes.py](../Python_prototype/black_scholes.py) | 增加解析公式、单位约定与差分检验 |
 | IV 求解器 | [Python_prototype/bs_batch.py](../Python_prototype/bs_batch.py) | 增加无套利界、低 Vega、失败状态与价格往返测试 |
 | 显式 SIMD 后端 | [BS_cpp/bs_batch.cpp](../BS_cpp/bs_batch.cpp) | 实现后端；复用 golden 测试并取得向量化证据 |
 | 并行效率验收 | [benchmarks/benchmark_python.py](../benchmarks/benchmark_python.py) | 记录硬件、线程数、吞吐与 speedup；当前报告不运行基准 |
@@ -75,6 +82,12 @@ PASS=满足当前断言；FAIL=断言失败；ERROR=运行错误；BLOCKED=进�
 | `test_bs_batch.BatchContractTests.test_invalid_inputs` | PASS |
 | `test_bs_batch.BatchContractTests.test_metamorphic_properties` | PASS |
 | `test_bs_batch.BatchContractTests.test_scalar_and_broadcast_shapes` | PASS |
+| `test_bs_greeks.GreeksTests.test_broadcast_empty_and_unchanged_input` | PASS |
+| `test_bs_greeks.GreeksTests.test_calendar_theta_and_rate_hold_fixed` | PASS |
+| `test_bs_greeks.GreeksTests.test_deterministic_kink_one_sided_time` | PASS |
+| `test_bs_greeks.GreeksTests.test_invalid_and_overflow` | PASS |
+| `test_bs_greeks.GreeksTests.test_pde_gamma_and_put_call_identities` | PASS |
+| `test_bs_greeks.GreeksTests.test_shared_high_precision_fixture` | PASS |
 | `test_complex_cdf_order.ComplexCdfOrderTests.test_batch_scalar_broadcast_steps_and_degenerate` | PASS |
 | `test_complex_cdf_order.ComplexCdfOrderTests.test_default_p3_and_legacy_exports` | PASS |
 | `test_complex_cdf_order.ComplexCdfOrderTests.test_golden_coefficients_all_orders` | PASS |
@@ -88,34 +101,16 @@ PASS=满足当前断言；FAIL=断言失败；ERROR=运行错误；BLOCKED=进�
 | `test_numerical_accuracy.NumericalAccuracyTests.test_tiny_fd_step_is_unresolvable` | PASS |
 | `test_numerical_accuracy.NumericalAccuracyTests.test_truncated_complex_cdf_changes_45_degree_order` | PASS |
 | `cpp:complex_cdf_order` | PASS |
-| `cpp:bs_batch_contract` | BLOCKED |
+| `cpp:bs_batch_contract` | PASS |
+| `cpp:bs_greeks_contract` | PASS |
 | `cpp:gamma_edge` | PASS |
-| `cpp:normal_cdf` | BLOCKED |
+| `cpp:normal_cdf` | PASS |
 
 原始记录：[JSON](../artifacts/test-report/results.json)、[Python 日志](../artifacts/test-report/python.log)、[C++ 日志](../artifacts/test-report/cpp.log)。
 
 ## 失败与受阻原因
 
-### cpp:bs_batch_contract — BLOCKED
-
-```text
-BAD_COMMAND
-
-
-Direct launch diagnostic: [WinError 4551] An Application Control policy has blocked this file
-```
-
-已确认原因：Windows Application Control 拒绝启动该可执行文件（系统错误 4551）。测试断言尚未执行，当前不能判断其数值结果；需要在允许执行该构建产物的环境中重新运行。
-### cpp:normal_cdf — BLOCKED
-
-```text
-BAD_COMMAND
-
-
-Direct launch diagnostic: [WinError 4551] An Application Control policy has blocked this file
-```
-
-已确认原因：Windows Application Control 拒绝启动该可执行文件（系统错误 4551）。测试断言尚未执行，当前不能判断其数值结果；需要在允许执行该构建产物的环境中重新运行。
+本次已运行测试均通过。通过范围以本报告测试列表为限。
 
 ## 误差曲线与原因
 

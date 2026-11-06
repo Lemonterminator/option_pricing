@@ -22,6 +22,18 @@ class CallResult:
     gamma: np.ndarray
 
 
+def _validated_inputs(S, K, r, q, sigma, T):
+    values = np.broadcast_arrays(
+        *(np.asarray(value, dtype=np.float64) for value in (S, K, r, q, sigma, T))
+    )
+    if any(not np.all(np.isfinite(value)) for value in values):
+        raise ValueError("All Black-Scholes inputs must be finite")
+    spot, strike, _, _, vol, expiry = values
+    if np.any(spot <= 0) or np.any(strike <= 0) or np.any(vol < 0) or np.any(expiry < 0):
+        raise ValueError("Require S,K>0 and sigma,T>=0")
+    return values
+
+
 def evaluate_call(S, K, r, q, sigma, T) -> CallResult:
     """Evaluate a European call on broadcast-compatible float64 inputs.
 
@@ -32,16 +44,8 @@ def evaluate_call(S, K, r, q, sigma, T) -> CallResult:
     This convention is a library choice, not a derivative at the kink.
     """
 
-    values = np.broadcast_arrays(
-        *(np.asarray(value, dtype=np.float64) for value in (S, K, r, q, sigma, T))
-    )
-    if any(not np.all(np.isfinite(value)) for value in values):
-        raise ValueError("All Black-Scholes inputs must be finite")
-    spot, strike, rate, yield_, vol, expiry = values
-    if np.any(spot <= 0) or np.any(strike <= 0) or np.any(vol < 0) or np.any(expiry < 0):
-        raise ValueError("Require S,K>0 and sigma,T>=0")
-
-    shape = spot.shape
+    values = _validated_inputs(S, K, r, q, sigma, T)
+    shape = values[0].shape
     flat = tuple(np.ravel(value) for value in values)
     sf, kf, rf, qf, vf, tf = flat
     price = np.empty(sf.size, dtype=np.float64)

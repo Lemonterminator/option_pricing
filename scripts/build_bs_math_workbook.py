@@ -210,7 +210,7 @@ def source_to_story(path):
             kind=f"h{len(heading.group(1))}"
             story.append(Paragraph(rich(heading.group(2)),STYLES[kind]))
             if kind=="h1":
-                story.append(Paragraph("Black-Scholes 数学学习资料 | 2026-10-04 | 先推导，再对照数值",STYLES["meta"]))
+                story.append(Paragraph("Black-Scholes 数学学习资料 | 先推导，再对照数值",STYLES["meta"]))
             i+=1; continue
         chunk=[line]; i+=1
         while i<len(lines) and lines[i].strip() and not re.match(r"^(#|\$\$|\||```|!\[)",lines[i].strip()):
@@ -219,6 +219,9 @@ def source_to_story(path):
             chunk.append(lines[i].strip()); i+=1
         paragraph=" ".join(chunk)
         paragraph_flow=Paragraph(rich(paragraph),STYLES["body"])
+        following = next((line.strip() for line in lines[i:] if line.strip()), "")
+        if following == "$$":
+            paragraph_flow.keepWithNext = True
         if paragraph.startswith("**纸笔停顿"):
             story.append(KeepTogether([paragraph_flow]+paper_pause()))
         else:
@@ -259,16 +262,25 @@ def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--lessons", nargs="+", choices=[f"{i:02}" for i in range(1,9)],
                         help="Rebuild selected lessons and the combined workbook; other lesson PDFs must already exist.")
+    parser.add_argument("--standalone", action="store_true",
+                        help="Build lesson PDFs without regenerating the combined workbook.")
     args=parser.parse_args()
     sources=sorted(SOURCES.glob("[0-9][0-9]_*.md"))
     selected=set(args.lessons) if args.lessons else {source.stem[:2] for source in sources}
     missing=[OUTPUT/f"{source.stem}.pdf" for source in sources
              if source.stem[:2] not in selected and not (OUTPUT/f"{source.stem}.pdf").is_file()]
-    if missing:
+    if missing and not args.standalone:
         parser.error("Unbuilt lesson PDFs: "+", ".join(path.name for path in missing)+". Rebuild all lessons first.")
     OUTPUT.mkdir(parents=True,exist_ok=True)
     (TEMP/"equations").mkdir(parents=True,exist_ok=True)
     register_fonts(); STYLES=styles()
+    if args.standalone:
+        for source in sources:
+            if source.stem[:2] in selected:
+                target=OUTPUT/f"{source.stem}.pdf"
+                _, pages=build_pdf(source,target)
+                print(f"{target.name}: {pages} pages")
+        return
     items=[]
     index=TEMP/"course_index.pdf"
     title,pages=build_pdf(SOURCES/"README.md",index)
