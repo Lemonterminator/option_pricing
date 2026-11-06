@@ -185,7 +185,8 @@ def inventory(registry):
             names = [n.name for n in ast.parse(source).body
                      if isinstance(n, (ast.FunctionDef, ast.AsyncFunctionDef)) and not n.name.startswith("_")]
         else:
-            names = sorted(set(re.findall(r"^(?:double|void|CallResult|std::complex<double>)\s+(\w+)\s*\(", source, re.M)))
+            result_types = r"double|void|CallResult|ScalarGreeks|GreeksResult|std::complex<double>"
+            names = sorted(set(re.findall(rf"^(?:{result_types})\s+(\w+)\s*\(", source, re.M)))
         for name in names:
             yield relative, name
 
@@ -207,6 +208,8 @@ def greeks(name):
         return "$C$"
     if name.startswith("evaluate_call"):
         return r"$C,\;\Delta,\;\Gamma$"
+    if name in {"evaluate_greeks", "greeks_scalar"}:
+        return r"$\nu,\;\Theta,\;\rho$"
     return "—"
 
 

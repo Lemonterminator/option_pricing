@@ -4,6 +4,12 @@ test_golden_cases (test_bs_batch.BatchContractTests.test_golden_cases) ... ok
 test_invalid_inputs (test_bs_batch.BatchContractTests.test_invalid_inputs) ... ok
 test_metamorphic_properties (test_bs_batch.BatchContractTests.test_metamorphic_properties) ... ok
 test_scalar_and_broadcast_shapes (test_bs_batch.BatchContractTests.test_scalar_and_broadcast_shapes) ... ok
+test_broadcast_empty_and_unchanged_input (test_bs_greeks.GreeksTests.test_broadcast_empty_and_unchanged_input) ... ok
+test_calendar_theta_and_rate_hold_fixed (test_bs_greeks.GreeksTests.test_calendar_theta_and_rate_hold_fixed) ... ok
+test_deterministic_kink_one_sided_time (test_bs_greeks.GreeksTests.test_deterministic_kink_one_sided_time) ... ok
+test_invalid_and_overflow (test_bs_greeks.GreeksTests.test_invalid_and_overflow) ... ok
+test_pde_gamma_and_put_call_identities (test_bs_greeks.GreeksTests.test_pde_gamma_and_put_call_identities) ... ok
+test_shared_high_precision_fixture (test_bs_greeks.GreeksTests.test_shared_high_precision_fixture) ... ok
 test_batch_scalar_broadcast_steps_and_degenerate (test_complex_cdf_order.ComplexCdfOrderTests.test_batch_scalar_broadcast_steps_and_degenerate) ... ok
 test_default_p3_and_legacy_exports (test_complex_cdf_order.ComplexCdfOrderTests.test_default_p3_and_legacy_exports) ... ok
 test_golden_coefficients_all_orders (test_complex_cdf_order.ComplexCdfOrderTests.test_golden_coefficients_all_orders) ... ok
@@ -18,6 +24,6 @@ test_tiny_fd_step_is_unresolvable (test_numerical_accuracy.NumericalAccuracyTest
 test_truncated_complex_cdf_changes_45_degree_order (test_numerical_accuracy.NumericalAccuracyTests.test_truncated_complex_cdf_changes_45_degree_order) ... ok
 
 ----------------------------------------------------------------------
-Ran 18 tests in 0.252s
+Ran 24 tests in 0.273s
 
 OK

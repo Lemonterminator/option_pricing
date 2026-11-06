@@ -39,6 +39,10 @@ if(BUILD_TESTING)
     target_link_libraries(bs_batch_contract_test PRIVATE black_scholes_core)
     add_test(NAME bs_batch_contract
         COMMAND bs_batch_contract_test "${CMAKE_CURRENT_SOURCE_DIR}/../testdata/bs_call_golden.csv")
+    add_executable(bs_greeks_contract_test tests/bs_greeks_contract_test.cpp)
+    target_link_libraries(bs_greeks_contract_test PRIVATE black_scholes_core)
+    add_test(NAME bs_greeks_contract
+        COMMAND bs_greeks_contract_test "${CMAKE_CURRENT_SOURCE_DIR}/../testdata/bs_greeks_golden.csv")
     add_test(NAME gamma_edge COMMAND gamma_edge_test)
     add_test(NAME normal_cdf COMMAND Phi_real_test)
 endif()

@@ -27,6 +27,28 @@ struct CallResult {
 
 enum class BatchBackend { Serial, ParUnseq };
 
+enum class OptionKind { Call, Put };
+
+struct ScalarGreeks {
+    double vega;
+    double theta;
+    double rho;
+};
+
+struct GreeksResult {
+    std::vector<double> vega;
+    std::vector<double> theta;
+    std::vector<double> rho;
+};
+
+// Vega and Rho per unit change in sigma and r, calendar Theta per year.
+// At ATM expiry with positive volatility, Theta is the extended limit -inf.
+// See docs/bs_greeks.md for the deterministic kink conventions.
+ScalarGreeks evaluate_greeks(double S, double K, double r, double q, double sigma, double T,
+    OptionKind kind = OptionKind::Call);
+GreeksResult evaluate_greeks(const CallInputs& input, OptionKind kind = OptionKind::Call,
+    BatchBackend backend = BatchBackend::Serial);
+
 // Throws invalid_argument for mismatched, nonfinite or out-of-domain inputs;
 // throws overflow_error if an otherwise accepted input has an unrepresentable
 // result. Degenerate sigma=0 or T=0 uses intrinsic price, gamma=0, and the
